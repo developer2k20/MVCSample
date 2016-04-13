@@ -1,0 +1,57 @@
+﻿@model HRMS.Models.UserModel
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="Heading">User Login</div>
+    <div class="clear">&nbsp;</div>
+    
+    <div class="Form">
+        <div class="FormLegend" style="width:85px;">
+            User Login
+        </div>
+        <div class="FormGroup">
+            <div class="LeftCol15">
+                @Html.LabelFor(model => model.UserName, "User Name", htmlAttributes: new { @class = "control-label" })
+            </div>
+            <div class="RightCol">
+                @Html.TextBoxFor(model => model.UserName, new { @maxlength = "50", @class = "formcontrol" })
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-denger" })
+            </div>
+        </div>
+
+        <div class="FormGroup">
+            <div class="LeftCol15">
+                @Html.LabelFor(model => model.Password, "Password", htmlAttributes: new { @class = "control-label" })
+            </div>
+            <div class="RightCol">
+                @Html.TextBoxFor(model => model.Password, new { @maxlength = "20", @class = "formcontrol" })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-denger" })
+            </div>
+        </div>
+
+        <div class="FormGroup">
+            <div class="LeftCol15">&nbsp;</div>
+            <div class="RightCol">
+                <input type="submit" value="Login" class="btn btn-default" />&nbsp;&nbsp;
+            </div>
+            <div style="padding-top:15px;">
+                @Html.ActionLink("New User", "AddUser", "Account")
+            </div>
+        </div>
+        <div class="FormGroup">
+            <div class="LeftCol15">&nbsp;</div>
+            <div class="RightCol">
+                <div style="color:green;">
+                    @Html.Raw(Html.Encode(TempData["Message"]).Replace(Environment.NewLine, "<br />"))
+                </div>
+                <div style="color:red;">
+                    @TempData["ErrorMessage"]
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear">&nbsp;</div>
+}

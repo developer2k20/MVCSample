@@ -1,0 +1,77 @@
+﻿@model HRMS.Models.UserModel
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="Heading">New User</div>
+    <div class="clear">&nbsp;</div>
+
+    <div class="Form">
+        <div class="FormLegend" style="width:73px;">
+            New User
+        </div>
+        <div class="FormGroup">
+            <div class="LeftCol15">
+                @Html.LabelFor(model => model.UserName, "User Name", htmlAttributes: new { @class = "control-label" })
+            </div>
+            <div class="RightCol">
+                @Html.TextBoxFor(model => model.UserName, new { @maxlength = "50", @class = "formcontrol" })
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-denger" })
+            </div>
+        </div>
+
+        <div class="FormGroup">
+            <div class="LeftCol15">
+                @Html.LabelFor(model => model.FirstName, "First Name", htmlAttributes: new { @class = "control-label" })
+            </div>
+            <div class="RightCol">
+                @Html.TextBoxFor(model => model.FirstName, new { @maxlength = "50", @class = "formcontrol" })
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-denger" })
+            </div>
+        </div>
+
+        <div class="FormGroup">
+            <div class="LeftCol15">
+                @Html.LabelFor(model => model.LastName, "Last Name", htmlAttributes: new { @class = "control-label" })
+            </div>
+            <div class="RightCol">
+                @Html.TextBoxFor(model => model.LastName, new { @maxlength = "50", @class = "formcontrol" })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-denger" })
+            </div>
+        </div>
+
+        <div class="FormGroup">
+            <div class="LeftCol15">
+                @Html.LabelFor(model => model.Email, "Email", htmlAttributes: new { @class = "control-label" })
+            </div>
+            <div class="RightCol">
+                @Html.TextBoxFor(model => model.Email, new { @maxlength = "200", @class = "formcontrol" })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-denger" })
+            </div>
+        </div>
+
+        <div class="FormGroup">
+            <div class="LeftCol15">&nbsp;</div>
+            <div class="RightCol">
+                <input type="submit" value="Submit" class="btn btn-default" />&nbsp;&nbsp;
+            </div>
+            <div style="padding-top:15px;">
+                @Html.ActionLink("Login", "Login", "Account")
+            </div>
+        </div>
+        <div class="FormGroup">
+            <div class="LeftCol15">&nbsp;</div>
+            <div class="RightCol">
+                <div style="color:green;">
+                    @ViewBag.Message
+                </div>
+                <div style="color:red;">
+                    @ViewBag.ErrorMessage
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear">&nbsp;</div>
+}
